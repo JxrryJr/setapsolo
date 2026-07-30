@@ -1,0 +1,3 @@
+{% extends 'base.html' %}
+{% block title %}Access denied | Supervisor Finder{% endblock %}
+{% block content %}<section class="container error-page"><p class="eyebrow">403</p><h1>You do not have permission to do that.</h1><p>Staff can only manage their own profile and project ideas.</p><a class="button" href="{{ url_for('dashboard') }}">Return to dashboard</a></section>{% endblock %}

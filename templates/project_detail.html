@@ -1,0 +1,6 @@
+{% extends 'base.html' %}
+{% block title %}{{ project.title }} | Supervisor Finder{% endblock %}
+{% block content %}
+<section class="page-heading"><div class="container narrow"><a class="back-link" href="{{ url_for('staff_profile', staff_id=project.staff_id) }}">← Back to {{ project.full_name }}</a><p class="eyebrow">{{ project.project_type }}</p><h1>{{ project.title }}</h1><p class="lead">A project proposed by <a href="{{ url_for('staff_profile', staff_id=project.staff_id) }}">{{ project.full_name }}</a>.</p><span class="status">{{ project.availability }}</span></div></section>
+<section class="container section narrow project-body"><h2>Project overview</h2><p>{{ project.summary }}</p><div class="detail-grid"><div><h3>Suggested skills</h3><p>{{ project.skills }}</p></div><div><h3>Supervisor</h3><p><a href="{{ url_for('staff_profile', staff_id=project.staff_id) }}">{{ project.full_name }}</a><br>{{ project.department }}</p></div></div><form method="post" action="{{ url_for('toggle_saved_project', project_id=project.id) }}"><button class="button button-outline" type="submit">{% if saved %}Remove from saved projects{% else %}Save this project{% endif %}</button></form></section>
+{% endblock %}

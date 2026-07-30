@@ -1,0 +1,5 @@
+{% extends 'base.html' %}
+{% block title %}Edit profile | Supervisor Finder{% endblock %}
+{% block content %}
+<section class="container form-page"><a class="back-link" href="{{ url_for('dashboard') }}">← Back to dashboard</a><p class="eyebrow">Public profile</p><h1>Update your profile</h1><p class="lead">Students use this summary when deciding whether to contact you.</p><form class="form-card" method="post"><label for="department">Department</label><input id="department" name="department" value="{{ staff.department }}" required minlength="2" maxlength="100"><label for="bio">Professional biography</label><textarea id="bio" name="bio" required minlength="30" maxlength="1000" rows="7">{{ staff.bio }}</textarea><p class="help-text">30–1,000 characters. Describe your teaching or research interests and the kind of projects you supervise.</p><div class="form-actions"><a href="{{ url_for('dashboard') }}">Cancel</a><button class="button" type="submit">Save profile</button></div></form></section>
+{% endblock %}

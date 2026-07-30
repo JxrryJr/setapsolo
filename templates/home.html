@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block title %}Find a supervisor | Supervisor Finder{% endblock %}
+{% block content %}
+<section class="hero"><div class="container hero-grid">
+  <div><p class="eyebrow">Final-year projects</p><h1>Find a project worth exploring.</h1><p class="lead">Browse expertise, discover project ideas and make an informed choice about your supervisor.</p>
+  <form class="search-card" action="{{ url_for('staff_directory') }}" method="get"><label for="search">What are you interested in?</label><input id="search" name="q" type="search" placeholder="e.g. data analysis or accessibility"><button class="button" type="submit">Search supervisors</button><a href="{{ url_for('staff_directory') }}">Browse all staff</a></form>
+  </div>
+  <aside class="hero-aside"><span class="stat">3</span><p>sample supervisors with a range of current project ideas</p><div class="accent-line"></div><p class="small">Use interests, skills and availability to compare your options.</p></aside>
+</div></section>
+<section class="section container"><div class="section-heading"><div><p class="eyebrow">Explore by topic</p><h2>Start with what interests you</h2></div><a href="{{ url_for('staff_directory') }}">View directory →</a></div><div class="tag-list">{% for interest in interests %}<a class="tag tag-link" href="{{ url_for('staff_directory', interest=interest.name) }}">{{ interest.name }}</a>{% endfor %}</div></section>
+<section class="section section-tint"><div class="container"><div class="section-heading"><div><p class="eyebrow">Recently added</p><h2>Project ideas to consider</h2></div></div><div class="card-grid">{% for project in latest_projects %}<article class="card"><p class="card-meta">{{ project.project_type }} · {{ project.availability }}</p><h3><a href="{{ url_for('project_detail', project_id=project.id) }}">{{ project.title }}</a></h3><p>{{ project.summary[:145] }}{% if project.summary|length > 145 %}…{% endif %}</p><footer>{{ project.full_name }} · {{ project.department }}</footer></article>{% endfor %}</div></div></section>
+{% endblock %}

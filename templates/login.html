@@ -1,0 +1,5 @@
+{% extends 'base.html' %}
+{% block title %}Staff sign in | Supervisor Finder{% endblock %}
+{% block content %}
+<section class="auth-page"><form class="auth-card" method="post"><p class="eyebrow">Staff area</p><h1>Sign in to manage your profile.</h1><p>Use the demonstration account shown in the project README.</p><label for="email">University email</label><input id="email" name="email" type="email" required autocomplete="email" placeholder="name@university.ac.uk"><label for="password">Password</label><input id="password" name="password" type="password" required autocomplete="current-password"><button class="button" type="submit">Sign in</button><p class="small">Demo: ada@university.ac.uk · demo123</p></form></section>
+{% endblock %}
