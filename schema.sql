@@ -1,0 +1,27 @@
+CREATE TABLE IF NOT EXISTS staff (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  full_name TEXT NOT NULL,
+  email TEXT NOT NULL UNIQUE,
+  password TEXT NOT NULL,
+  department TEXT NOT NULL,
+  bio TEXT NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS interests (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  staff_id INTEGER NOT NULL,
+  name TEXT NOT NULL,
+  FOREIGN KEY (staff_id) REFERENCES staff(id) ON DELETE CASCADE,
+  UNIQUE(staff_id, name)
+);
+
+CREATE TABLE IF NOT EXISTS projects (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  staff_id INTEGER NOT NULL,
+  title TEXT NOT NULL,
+  summary TEXT NOT NULL,
+  skills TEXT NOT NULL,
+  project_type TEXT NOT NULL,
+  availability TEXT NOT NULL,
+  FOREIGN KEY (staff_id) REFERENCES staff(id) ON DELETE CASCADE
+);
